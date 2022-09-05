@@ -3,15 +3,38 @@ let totalCompra = 0
 let seguirComprando = true
 alert("A continuacion le mostraremos un listado de articulos y precio SIN inpuestos incluidos para ROPA DEPORTIVA, ingrese codigo de articulo que desea comprar")
 let productoSeleccionado = parseInt(prompt("Precio SIN Inpuestos incluidos 1-Remera = Costo Total $450, 2-Short = Costo Total $400, 3-Buzos = Costo Total $500, 4-Medias = Costo Total $100"))
+let producto = []
+let carrito = []
+const remera = {
+    nombre:'remera',
+    precio:450
+}
+producto.push(remera)
+const short = {
+    nombre:'short',
+    precio:400
+}
+producto.push(short)
+const buzos = {
+    nombre:'buzos',
+    precio:500
+}
+producto.push(buzos)
+const medias = {
+    nombre:'medias',
+    precio:100
+}
+producto.push(medias)
+
 while(seguirComprando===true){
     if(productoSeleccionado===1){
-        totalCompra = totalCompra + 450
+        carrito.push(producto[0])
     }else if(productoSeleccionado===2){
-        totalCompra = totalCompra + 400
+        carrito.push(producto[1])
     }else if(productoSeleccionado===3){
-        totalCompra = totalCompra + 500
+        carrito.push(producto[2])
     }else if(productoSeleccionado===4){
-        totalCompra = totalCompra + 100
+        carrito.push(producto[3])
     }else{
         productoSeleccionado = parseInt(prompt("SELECCIONE CODIGO CORRECTO: Precio SIN Inpuestos incluidos 1-Remera = Costo Total $450, 2-Short = Costo Total $400, 3-Buzos = Costo Total $500, 4-Medias = Costo Total $100"))
         continue
@@ -23,6 +46,11 @@ while(seguirComprando===true){
         seguirComprando=false
     }
 }
+
+for (const elemento of carrito) {
+    totalCompra = totalCompra + elemento.precio
+}
+
 function calcularDescuento(valor){
     let descuento = 10
     let valorDescuento = valor * (descuento/100)
